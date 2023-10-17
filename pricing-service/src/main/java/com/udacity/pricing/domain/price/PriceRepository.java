@@ -1,8 +1,9 @@
 package com.udacity.pricing.domain.price;
 
-import org.springframework.stereotype.Repository;
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.rest.core.annotation.RepositoryRestResource;
 
-@Repository
-public class PriceRepository {
-
+@RepositoryRestResource(collectionResourceRel = "prices", path = "prices")
+public interface PriceRepository extends JpaRepository<Price, Long> {
+    Price findByVehicleId(Long vehicleId);
 }
